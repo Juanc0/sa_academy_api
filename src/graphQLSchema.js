@@ -35,12 +35,14 @@ const mergedTypeDefs = mergeSchemas(
 	]
 );
 
+
+const resolvers = merge( studentsResolvers, coursesResolvers )
+
 // Generate the schema object from your types definition.
 export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		studentsResolvers,
-		coursesResolvers
+		resolvers
 	)
 });

@@ -7,6 +7,8 @@ import koaCors from '@koa/cors';
 import { graphiqlKoa, graphqlKoa } from 'apollo-server-koa';
 import graphQLSchema from './graphQLSchema';
 
+console.log(graphQLSchema);
+
 import { formatErr } from './utilities';
 
 const app = new Koa();
