@@ -9,20 +9,29 @@ import {
 	studentsQueries,
 	studentsTypeDef
 } from './students/typeDefs';
+import {
+	coursesMutations,
+	coursesQueries,
+	coursesTypeDef
+} from './courses/typeDefs'
 
 import studentsResolvers from './students/resolvers';
+import coursesResolvers from './courses/resolvers'
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		studentsTypeDef
+		studentsTypeDef,
+		coursesTypeDef
 	],
 	[
-		studentsQueries
+		studentsQueries,
+		coursesQueries
 	],
 	[
-		studentsMutations
+		studentsMutations,
+		coursesMutations
 	]
 );
 
@@ -31,6 +40,7 @@ export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		studentsResolvers
+		studentsResolvers,
+		coursesResolvers
 	)
 });
